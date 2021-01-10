@@ -1,0 +1,17 @@
+class Solution:
+    def shortestCompletingWord(self, licensePlate: str, words: List[str]) -> str:
+        res=[]
+        for i in licensePlate:   
+            if 'a'<=i<='z' or 'A'<=i<='Z':
+                res.append(i.lower())
+        words=sorted(words,key=lambda x:len(x))   
+        for i in words: 
+            temp=list(i)
+            for j in res:             
+                if j in temp:
+                    temp.remove(j)
+                else:                    
+                    break
+            else:
+                return i                  
+        
